@@ -36,7 +36,7 @@ describe User do
 
   describe "when email format is invalid" do
     it "should be invalid" do
-      addresses = %w[user@foo,com user_at_foo.org example.user@foo.foo@bar_baz.com foo@bar+baz.com]
+      addresses = %w[users@foo,com user_at_foo.org example.users@foo.foo@bar_baz.com foo@bar+baz.com]
       addresses.each do |inv_address|
         @user.email = inv_address
         expect(@user).not_to be_valid
@@ -46,7 +46,7 @@ describe User do
 
   describe "when email format is valid" do
     it "should be valid" do
-      addresses = %w[user@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
+      addresses = %w[users@foo.COM A_US-ER@f.b.org frst.lst@foo.jp a+b@baz.cn]
       addresses.each do |address|
         @user.email = address
         expect(@user).to be_valid
@@ -54,7 +54,7 @@ describe User do
     end
   end
 
-  describe "whem email address already is taken" do
+  describe "when email address already is taken" do
     before do
       user_with_same_email = @user.dup
       user_with_same_email.save
